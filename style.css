@@ -51,3 +51,32 @@ a {
   color: antiquewhite;
   cursor: pointer;
 }
+/* #topic {
+  text-align: center;
+  margin-top: 2vw;
+} */
+.body_section {
+  margin: 4rem 4rem;
+}
+.games {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 30% 30%;
+  grid-template-rows: 40vh;
+  justify-content: center;
+  gap: 2rem;
+}
+.games li {
+  /* border: 1px solid black; */
+  box-shadow: 2px 2px 5px rgba(145, 142, 255, 0.8);
+}
+.games li {
+  text-align: center;
+  padding: 1rem;
+}
+.games li:hover {
+  transition: all 0.5s ease-in-out;
+  height: 50vh;
+  cursor: pointer;
+  transform: translateX(-1rem) /*translateY(1rem) */;
+}
