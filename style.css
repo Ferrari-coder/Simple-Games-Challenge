@@ -17,6 +17,26 @@ nav {
   justify-content: space-between;
   margin: 2rem 4rem;
 }
+.rocket {
+  margin-left: 20vw;
+}
+.fa-rocket {
+  font-size: 30px;
+  color: rgba(145, 142, 255, 0.7);
+  animation: Rocket 8s 2s ease-in-out infinite;
+}
+@keyframes Rocket {
+  10% {
+    transform: rotateZ(45deg);
+  }
+  60% {
+    transform: translateX(60vw);
+    color: #3d73ff;
+  }
+  80% {
+    transform: rotateZ(360deg);
+  }
+}
 .icon_search,
 .user {
   display: flex;
