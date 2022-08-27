@@ -8,6 +8,8 @@ const holdButton = document.querySelector(".btn-hold");
 const imageBox = document.querySelector(".img-box");
 const image = document.querySelector(".img-box img");
 const newButton = document.querySelector(".btn-new");
+const closeModal = document.querySelector(".btn-close");
+
 let activePlayer = 1;
 
 //default values
@@ -51,27 +53,34 @@ rollDice.addEventListener("click", function () {
 
 holdButton.addEventListener("click", () => {
   // adding current score to total score
-  totalScore[activePlayer] += score;
-  document.querySelector(`.player${activePlayer} .zero`).textContent =
-    totalScore[activePlayer];
-  //declaring winner
-  if (totalScore[activePlayer] >= 100) {
-    document.querySelector(".player-active").style.background = "pink";
-    imageBox.classList.add("hidden");
-  } else {
-    // switch active player
-    score = 0;
-    document.querySelector(`#player${activePlayer}-current`).textContent =
-      score;
+  if (totalScore[1] < 100 && totalScore[2] < 100) {
+    totalScore[activePlayer] += score;
+    document.querySelector(`.player${activePlayer} .zero`).textContent =
+      totalScore[activePlayer];
+    //declaring winner
+    if (totalScore[activePlayer] >= 100) {
+      document.querySelector(".player-active").style.background = "pink";
+      imageBox.classList.add("hidden");
+      document.querySelector(".backdrop").classList.remove("hidden");
+      document.querySelector(".modal-window").classList.remove("hidden");
+      document.querySelector(
+        ".modal-window h2"
+      ).textContent = `Player ${activePlayer} Wins 🎉🎉🥇`;
+    } else {
+      // switch active player
+      score = 0;
+      document.querySelector(`#player${activePlayer}-current`).textContent =
+        score;
 
-    document
-      .querySelector(`.player${activePlayer}`)
-      .classList.toggle("player-active");
+      document
+        .querySelector(`.player${activePlayer}`)
+        .classList.toggle("player-active");
 
-    activePlayer = activePlayer === 1 ? 2 : 1;
-    document
-      .querySelector(`.player${activePlayer}`)
-      .classList.toggle("player-active");
+      activePlayer = activePlayer === 1 ? 2 : 1;
+      document
+        .querySelector(`.player${activePlayer}`)
+        .classList.toggle("player-active");
+    }
   }
 });
 
@@ -83,9 +92,14 @@ newButton.addEventListener("click", function () {
   currentScore2.textContent = 0;
   scoreTotal1.textContent = 0;
   scoreTotal2.textContent = 0;
-  document.querySelector(".player-active").style.background = " rgba(255, 255, 255, 0.2)";
+  document.querySelector(".player-active").style.background =
+    " rgba(255, 255, 255, 0.2)";
   imageBox.classList.add("hidden");
   document.querySelector(`.player1`).classList.add("player-active");
 
   document.querySelector(`.player2`).classList.remove("player-active");
+});
+closeModal.addEventListener("click", () => {
+  document.querySelector(".backdrop").classList.add("hidden");
+  document.querySelector(".modal-window").classList.add("hidden");
 });
